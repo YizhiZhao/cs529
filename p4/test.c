@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
         try(1, 2);
         try(1, 3);
 
-        try(2088, 1);
-        try(2088, 2);
-        try(2088, 3);
+        try(2072, 1);
+        try(2072, 2);
+        try(2072, 3);
 
 
         try(-1, 1);
