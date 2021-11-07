@@ -3,7 +3,7 @@
 #include <linux/sched.h>
 #include <linux/pid.h>
 
-#define KERNEL_STACK_PAGES 2
+#define KERNEL_STACK_PAGES 4
 
 // this function calculate the physical memory size with virtual memory begin and end as input
 long cal_physical_memory(struct mm_struct *s_mm, unsigned long start, unsigned long end)
@@ -35,8 +35,9 @@ long cal_physical_memory(struct mm_struct *s_mm, unsigned long start, unsigned l
                 if (!(pte = pte_offset_map(pmd, p_page)))
                         continue;
                 if (NULL == pte)
-                        continue;
-                result += PAGE_SIZE;
+                        continue;                
+                if (pte_present(*pte))
+                        result += PAGE_SIZE;
         }
 
         return result;
